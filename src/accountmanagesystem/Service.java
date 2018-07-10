@@ -31,5 +31,8 @@ public class Service {
 		return x.getFirstName();
 
 	}
+	public HashMap<String, Account> getAllUserAccounts() {
+		return allUserAccounts;
+	}
 
 }
