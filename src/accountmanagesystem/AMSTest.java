@@ -2,6 +2,8 @@ package accountmanagesystem;
 
 import static org.junit.Assert.assertEquals;
 
+import java.util.Iterator;
+
 import org.junit.Before;
 import org.junit.BeforeClass;
 import org.junit.Test;
@@ -21,6 +23,7 @@ public class AMSTest {
 		services.addUsers("Syed", "Ahmed", "34567");
 
 	}
+	/*
 
 	@Before
 	public void creatingAccountSetup() {
@@ -69,7 +72,7 @@ public class AMSTest {
 		
 		assertEquals(true, services.bannedAccounts(123456));
 
-	}
+	}*/
 	@Test
 	public void searchAccountsTest() {
 		
@@ -80,8 +83,9 @@ public class AMSTest {
 		String searchName = "J";
 		int expectedResult = 3;
 		
-		assertEquals(expectedResult, services.searchAccounts(""));	
+		assertEquals(expectedResult, services.searchAccounts(searchName));	
 		
 	}
 	
 }
+

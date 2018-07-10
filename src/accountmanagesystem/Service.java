@@ -1,7 +1,7 @@
 package accountmanagesystem;
 
 import java.util.HashMap;
-import java.util.Iterator;
+import java.util.Set;
 
 import org.json.JSONObject;
 import org.json.XML;
@@ -24,15 +24,15 @@ public class Service {
 
 	}
 
-	public Account getUserAccount(String x) {
+	public Account getUserAccount(String userAccNoKey) {
 
-		return allUserAccounts.get(x);
+		return allUserAccounts.get(userAccNoKey);
 
 	}
 
-	public String listUserAccount(Account x) {
+	public String listUserAccount(Account userAcc) {
 
-		return x.getFirstName();
+		return userAcc.getFirstName();
 
 	}
 
@@ -49,9 +49,9 @@ public class Service {
 		System.out.println(XML.toString(getAllUserAccounts()));
 	}
 
-	public boolean bannedAccounts(int x) {
+	public boolean bannedAccounts(int bannedAccNo) {
 
-		String number = Integer.toString(x);
+		String number = Integer.toString(bannedAccNo);
 
 		if (allUserAccounts.containsKey(allUserAccounts.get(number))) {
 			System.err.println("this user has been banned");
@@ -61,5 +61,17 @@ public class Service {
 
 	}
 
+	public int searchAccounts(String startingLetter) {
 
+		int counter = 0;
+
+		for (String accountNo : allUserAccounts.keySet()) {
+
+			if (allUserAccounts.get(accountNo).getFirstName().startsWith(startingLetter)) {
+				counter++;
+			}
+		}
+		return counter;		
+		
+	}
 }
