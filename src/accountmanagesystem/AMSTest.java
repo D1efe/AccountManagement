@@ -62,7 +62,7 @@ public class AMSTest {
 		services.jsonAllXML();
 
 	}
-
+ 
 	public void bannerAccountTest() {
 		
 		services.addUsers("John", "Gourdon", "123456");
@@ -70,4 +70,18 @@ public class AMSTest {
 		assertEquals(true, services.bannedAccounts(123456));
 
 	}
+	@Test
+	public void searchAccountsTest() {
+		
+		services.addUsers("Jason", "Osagie", "12345");
+		services.addUsers("Joseph", "Stanley", "23456");
+		services.addUsers("Jayden", "Ahmed", "34567");
+		
+		String searchName = "J";
+		int expectedResult = 3;
+		
+		assertEquals(expectedResult, services.searchAccounts(""));	
+		
+	}
+	
 }

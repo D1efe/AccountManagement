@@ -1,6 +1,7 @@
 package accountmanagesystem;
 
 import java.util.HashMap;
+import java.util.Iterator;
 
 import org.json.JSONObject;
 import org.json.XML;
@@ -49,7 +50,7 @@ public class Service {
 	}
 
 	public boolean bannedAccounts(int x) {
-		
+
 		String number = Integer.toString(x);
 
 		if (allUserAccounts.containsKey(allUserAccounts.get(number))) {
@@ -59,5 +60,6 @@ public class Service {
 			return false;
 
 	}
+
 
 }
