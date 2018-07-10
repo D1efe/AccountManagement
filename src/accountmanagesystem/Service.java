@@ -63,15 +63,7 @@ public class Service {
 
 	public int searchAccounts(String startingLetter) {
 
-		int counter = 0;
-
-		for (String accountNo : allUserAccounts.keySet()) {
-
-			if (allUserAccounts.get(accountNo).getFirstName().startsWith(startingLetter)) {
-				counter++;
-			}
-		}
-		return counter;		
+		return (int) allUserAccounts.values().stream().filter(v -> v.getFirstName().startsWith(startingLetter)).count();
 		
 	}
 }
