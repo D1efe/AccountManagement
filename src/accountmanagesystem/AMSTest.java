@@ -1,18 +1,38 @@
 package accountmanagesystem;
 
-import static org.junit.Assert.*;
+import static org.junit.Assert.assertEquals;
 
-import org.json.JSONObject;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 public class AMSTest {
 
+	private static Service services;
+	private static Account dansAccount, NaomiAccount, SyedsAccount;
+
+	@BeforeClass
+	public static void setUp() {
+
+		services = new Service();
+
+		services.addUsers("Daniel", "Osagie", "12345");
+		services.addUsers("Naomi", "Stanley", "23456");
+		services.addUsers("Syed", "Ahmed", "34567");
+
+	}
+
+	@Before
+	public void creatingAccountSetup() {
+
+		dansAccount = new Account("Daniel", "Osagie", "123456");
+		NaomiAccount = new Account("Naomi", "Stanley", "234567");
+		SyedsAccount = new Account("Syed", "Ahmed", " 345678");
+
+	}
+
 	@Test
 	public void createAccountTest() {
-
-		Account dansAccount = new Account("Daniel", "Osagie", "123456");
-		Account NaomiAccount = new Account("Naomi", "Stanley", "234567");
-		Account SyedsAccount = new Account("Syed", "Ahmed", " 345678");
 
 		assertEquals("Daniel", dansAccount.getFirstName());
 		assertEquals("Naomi", NaomiAccount.getFirstName());
@@ -23,12 +43,6 @@ public class AMSTest {
 	@Test
 	public void getUsersTest() {
 
-		Service services = new Service();
-
-		services.addUsers("Daniel", "Osagie", "12345");
-		services.addUsers("Naomi", "Stanley", "23456");
-		services.addUsers("Syed", "Ahmed", "34567");
-
 		assertEquals("Daniel", services.listUserAccount(services.getUserAccount("12345")));
 		assertEquals("Naomi", services.listUserAccount(services.getUserAccount("23456")));
 		assertEquals("Syed", services.listUserAccount(services.getUserAccount("34567")));
@@ -36,16 +50,24 @@ public class AMSTest {
 	}
 
 	@Test
-	public void showAllUsers() {
+	public void jsonStuff() {
 
-		Service services = new Service();
+		services.jsonAllUsers();
 
-		services.addUsers("Daniel", "Osagie", "12345");
-		services.addUsers("Naomi", "Stanley", "23456");
-		services.addUsers("Syed", "Ahmed", "34567");
+	}
 
-		JSONObject json = new JSONObject(services.getAllUserAccounts());
-		System.out.println(json);
+	@Test
+	public void xmlStuff() {
+
+		services.jsonAllXML();
+
+	}
+
+	public void bannerAccountTest() {
+		
+		services.addUsers("John", "Gourdon", "123456");
+		
+		assertEquals(true, services.bannedAccounts(123456));
 
 	}
 }

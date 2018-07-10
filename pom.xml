@@ -24,12 +24,6 @@
 			<artifactId>json</artifactId>
 			<version>20160810</version>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/xml-apis/xml-apis -->
-		<dependency>
-			<groupId>xml-apis</groupId>
-			<artifactId>xml-apis</artifactId>
-			<version>1.4.01</version>
-		</dependency>
-
+		
 	</dependencies>
 </project>
